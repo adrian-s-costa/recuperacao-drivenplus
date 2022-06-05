@@ -4,21 +4,20 @@ import styled from 'styled-components';
 export default function SubOption(props){
     
     return(
-        <OneSub>
-            <ImgLogo src={props.img} alt='SubLogo'/>
+        <OneSub onClick={props.clickFunc}>
+            <ImgLogo src={props.img} alt='Sub-Logo'/>
             <h2>{props.text}</h2>
         </OneSub>
     )
 }
 
 const ImgLogo = styled.img`
-    
     width: 139px;
     height: 95.13px;
 `
 
 const OneSub = styled.div`
-    margin-bottom: 16px;
+    margin-bottom: 10px;
     width: 290px;
     height: 180px;
     background: #0E0E13;

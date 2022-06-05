@@ -12,9 +12,14 @@ import GlobalStyle from './styles/createGlobalStyle'
 
 export default function App (){
 
-    const [loginData, setLoginData] = useState({email: '', password: ''})
+    const [loginData, setLoginData] = useState({email: 'email@email.com', password: '123'})
+    const [cardData, setCardData] = useState({merbershipId: '', cardName: '', cardNumber: '', securityNumber: '', expirationDate: ''})
     const [userData, setUserData] = useState({})
-    const contextValue = { loginData, setLoginData, userData, setUserData }
+    const [membershipATM, setMembershipATM] = useState({})
+    const [IdSub, setIdSub] = useState('')
+    const [popUp, setPopUp] = useState(false)
+    const [perks, setPerks] = useState([])
+    const contextValue = { loginData, setLoginData, userData, setUserData, IdSub, setIdSub, popUp, setPopUp, cardData, setCardData, membershipATM, setMembershipATM, perks, setPerks}
 
     return(
         <BrowserRouter>
@@ -25,7 +30,7 @@ export default function App (){
                     <Route path="/sign-up" element={<SignUp />}/>
                     <Route path="/home" element={<Home />}/>
                     <Route path="/subscriptions" element={<Subscriptions />}/>
-                    <Route path="/subscriptions/:idSub" element={<Subscription />}/>
+                    <Route path="/subscriptions/:subID" element={<Subscription />}/>
                 </Routes>
             </UserContext.Provider>    
         </BrowserRouter>

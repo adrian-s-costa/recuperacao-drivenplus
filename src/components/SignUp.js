@@ -28,7 +28,11 @@ export default function Register(){
                 console.log(loginData)
                 console.log(response.data)
                 setUserData(response.data)
-                navigate('/home')
+                if (response.data.membership === null){
+                    navigate('/subscriptions')
+                }else{
+                    navigate('/home')
+                }
             })
             promise.catch(response=>{
                 setLoading(false)
@@ -45,11 +49,11 @@ export default function Register(){
     return(
         <SignDiv>
             <form onSubmit={setarDados}>
-                <Input type={'text'} placeholder={'Nome'} set={(e) => setRegisterData({ ...registerData, name: e.target.value})} value={registerData.name} disabled={loading?true:false} />
-                <Input type={'text'} placeholder={'CPF'} set={(e) => setRegisterData({ ...registerData, cpf: e.target.value})} value={registerData.cpf} disabled={loading?true:false} />
-                <Input type={'email'} placeholder={'E-mail'} set={(e) => setRegisterData({ ...registerData, email: e.target.value})} value={registerData.email}  disabled={loading?true:false} />
-                <Input type={'password'} placeholder={'Senha'} set={(e) => setRegisterData({ ...registerData, password: e.target.value})} value={registerData.password} disabled={loading?true:false} />
-                <Button clickFunc={() => setLoginData({...loginData, email: registerData.email, password: registerData.password}, setLoading(true))} disabled={loading?true:false} tag={loading?<Loading/>:'CADASTRAR'}/>
+                <Input type={'text'} placeholder={'Nome'} set={(e) => setRegisterData({ ...registerData, name: e.target.value})} value={registerData.name} disabled={loading?true:false} width={'299px'}/>
+                <Input type={'text'} placeholder={'CPF'} set={(e) => setRegisterData({ ...registerData, cpf: e.target.value})} value={registerData.cpf} disabled={loading?true:false} margintop = {'16px'} width={'299px'}/>
+                <Input type={'email'} placeholder={'E-mail'} set={(e) => setRegisterData({ ...registerData, email: e.target.value})} value={registerData.email}  disabled={loading?true:false} margintop = {'16px'} width={'299px'}/>
+                <Input type={'password'} placeholder={'Senha'} set={(e) => setRegisterData({ ...registerData, password: e.target.value})} value={registerData.password} disabled={loading?true:false} margintop = {'16px'} width={'299px'}/>
+                <Button clickFunc={() => setLoginData({...loginData, email: registerData.email, password: registerData.password}, setLoading(true))} disabled={loading?true:false} tag={loading?<Loading/>:'CADASTRAR'} margintop = {'16px'} color={'#FF4791'}/>
 
                 <Link to={`/`}>
                     <LinkCadastro>

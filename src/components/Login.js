@@ -23,12 +23,15 @@ function Login(){
         promise.then(response => {
             setLoading(false)
             setUserData(response.data)
-            console.log(userData)
-            navigate('/home')
+            if (response.data.membership === null){
+                navigate('/subscriptions')
+            }else{
+                navigate('/home')
+            }
         })
         promise.catch(response=>{
             setLoading(false)
-            alert('login ou senha incorretos, tente novamente')
+            alert('Login ou senha incorretos, tente novamente')
         })
     }
 
@@ -37,9 +40,9 @@ function Login(){
         <LoginDiv>
             <Logo/>
             <form onSubmit={setarDados}>
-                <Input type={'text'} placeholder={'E-mail'} set={(e) => setLoginData({ ...loginData, email: e.target.value})} value={loginData.email} disabled={loading?true:false}/>
-                <Input type={'password'} placeholder={'Senha'} set={(e) => setLoginData({ ...loginData, password: e.target.value})} value={loginData.password} disabled={loading?true:false}/>
-                <Button disabled={loading?true:false} clickFunc={()=>setLoading(true)} tag={loading?<Loading />:'ENTRAR'}></Button>
+                <Input type={'text'} placeholder={'E-mail'} set={(e) => setLoginData({ ...loginData, email: e.target.value})} value={loginData.email} disabled={loading?true:false} width={'299px'}/>
+                <Input type={'password'} placeholder={'Senha'} set={(e) => setLoginData({ ...loginData, password: e.target.value})} value={loginData.password} disabled={loading?true:false} margintop = {'16px'} width={'299px'}/>
+                <Button disabled={loading?true:false} clickFunc={()=>setLoading(true)} tag={loading?<Loading />:'ENTRAR'} color = {'#FF4791'} margintop={'24px'}></Button>
                 <Link to={`/sign-up`}>
                     <LinkCadastro>
                         <span>Não possui conta? Cadastre-se</span>
@@ -60,11 +63,11 @@ const LoginDiv = styled.section`
 `
 
 const LinkCadastro = styled.div`
+    
     display: flex;
     justify-content: center;
     
     span{
-        font-style: normal;
         margin-top: 25px;
         font-size: 13.976px;
         text-align: center;
