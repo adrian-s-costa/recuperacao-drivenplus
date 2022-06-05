@@ -12,7 +12,7 @@ import GlobalStyle from './styles/createGlobalStyle'
 
 export default function App (){
 
-    const [loginData, setLoginData] = useState({email: 'email@email.com', password: '123'})
+    const [loginData, setLoginData] = useState({email: '', password: ''})
     const [cardData, setCardData] = useState({merbershipId: '', cardName: '', cardNumber: '', securityNumber: '', expirationDate: ''})
     const [userData, setUserData] = useState({})
     const [membershipATM, setMembershipATM] = useState({})
